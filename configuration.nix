@@ -103,6 +103,7 @@ in {
         pciutils
         pkg-config
         smartmontools
+        tailscale
         tcpdump
         tmux
         unixtools.xxd
