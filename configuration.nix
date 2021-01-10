@@ -1,6 +1,7 @@
 { config, pkgs, ... }:
 let
-  unstable = import <nixos-unstable-small> { };
+  unstable_os = import <nixos-unstable> { };
+  unstable_pkgs = import <nixpkgs-unstable> { };
 
 in {
     imports = [ # Include the results of the hardware scan.
@@ -15,7 +16,7 @@ in {
       };
 
       # Linux kernel 5.10 LTS
-      kernelPackages = unstable.linuxPackages_5_10;
+      kernelPackages = unstable_os.linuxPackages_5_10;
     };
 
     networking = {
@@ -103,7 +104,7 @@ in {
         pciutils
         pkg-config
         smartmontools
-        tailscale
+        unstable_pkgs.tailscale
         tcpdump
         tmux
         unixtools.xxd
