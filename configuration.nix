@@ -5,23 +5,23 @@
     ./hardware-configuration.nix
   ];
 
-  # Use the systemd-boot EFI boot loader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  boot = {
+    loader.systemd-boot.enable = true;
+    loader.efi.canTouchEfiVariables = true;
+  };
 
-  networking.hostName = "servnerr"; # Define your hostname.
-  networking.wireless.enable =
-    false; # Enables wireless support via wpa_supplicant.
+  networking = {
+    hostName = "servnerr";
 
-  # Set your time zone.
+    wireless.enable = false;
+    firewall.enable = false;
+
+    useDHCP = false;
+    interfaces.eno1.useDHCP = true;
+    interfaces.wlp2s0.useDHCP = true;
+  };
+
   time.timeZone = "America/Toronto";
-
-  # The global useDHCP flag is deprecated, therefore explicitly set to false here.
-  # Per-interface useDHCP will be mandatory in the future, so this generated config
-  # replicates the default behaviour.
-  networking.useDHCP = false;
-  networking.interfaces.eno1.useDHCP = true;
-  networking.interfaces.wlp2s0.useDHCP = true;
 
   i18n.defaultLocale = "en_US.UTF-8";
   console = {
@@ -39,23 +39,34 @@
     ];
   };
 
+  nix = {
+    # Automatic Nix GC.
+    gc = {
+      automatic = true;
+      dates = "04:00";
+      options = "--delete-older-than 30d";
+    };
+    extraOptions = ''
+      min-free = ${toString (500 * 1024 * 1024)}
+    '';
+
+    # Automatic store optimization.
+    autoOptimiseStore = true;
+  };
+
+  system = {
+    # Automatic upgrades.
+    autoUpgrade.enable = true;
+    autoUpgrade.allowReboot = true;
+
+    stateVersion = "20.09";
+  };
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [ git nixfmt nix-linter ];
+  environment.systemPackages = with pkgs; [ git nixfmt ];
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
-
-  networking.firewall.enable = false;
-
-  system.autoUpgrade.enable = true;
-  system.autoUpgrade.allowReboot = true;
-  # This value determines the NixOS release from which the default
-  # settings for stateful data, like file locations and database versions
-  # on your system were taken. It‘s perfectly fine and recommended to leave
-  # this value at the release version of the first install of this system.
-  # Before changing this value read the documentation for this option
-  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "20.09"; # Did you read the comment?
 }
 
