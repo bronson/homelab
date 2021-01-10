@@ -62,11 +62,51 @@
     stateVersion = "20.09";
   };
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs; [ git nixfmt ];
+  environment = {
+    # Put ~/bin in PATH.
+    homeBinInPath = true;
+
+    # Packages which should be installed on every machine.
+    systemPackages = with pkgs; [
+      bandwhich
+      byobu
+      dmidecode
+      ethtool
+      gcc
+      go
+      git
+      gnumake
+      htop
+      iftop
+      iperf3
+      jq
+      lm_sensors
+      lshw
+      lsscsi
+      mkpasswd
+      mtr
+      ndisc6
+      neofetch
+      nethogs
+      nixfmt
+      nix-linter
+      nmap
+      nmon
+      pciutils
+      pkg-config
+      smartmontools
+      tcpdump
+      tmux
+      unixtools.xxd
+      unzip
+      usbutils
+      wget
+    ];
+  };
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
-}
 
+  # Enable the Tailscale.
+  services.tailscale.enable = true;
+}
