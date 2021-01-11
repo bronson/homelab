@@ -132,7 +132,8 @@ in {
   services.openssh.enable = true;
 
   programs.mosh.enable = true;
-  # Enable the Tailscale.
+
+  # Enable Tailscale.
   services.tailscale.enable = true;
 
   # Run node_exporter everywhere.
