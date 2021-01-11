@@ -84,6 +84,7 @@ in {
         gcc
         go
         git
+        unstable_pkgs.gitAndTools.gh
         gnumake
         htop
         iftop
