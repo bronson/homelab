@@ -17,6 +17,8 @@ in {
 
       # Linux kernel 5.10 LTS
       kernelPackages = unstable_os.linuxPackages_5_10;
+
+      cleanTmpDir = true;
     };
 
     networking = {
@@ -41,7 +43,7 @@ in {
     # Define a user account. Don't forget to set a password with ‘passwd’.
     users.users.adi = {
       isNormalUser = true;
-      extraGroups = [ "wheel" "sudo" ]; # Enable ‘sudo’ for the user.
+      extraGroups = [ "wheel" "sudo" "docker" ]; # Enable ‘sudo’ for the user.
 
       openssh.authorizedKeys.keys = [
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBSWf+pMgyV7gCuYvYh0ySizmKLhCCZCRw4trVqLeqol"
@@ -111,7 +113,10 @@ in {
         unzip
         usbutils
         wget
+        zsh
       ];
+
+      shells = pkgs.zsh
     };
 
     # Enable the OpenSSH daemon.
@@ -119,4 +124,8 @@ in {
 
     # Enable the Tailscale.
     services.tailscale.enable = true;
+
+    security.sudo.wheelNeedsPassword = false;
+    virtualisation.docker.enable = true;
+    virtualisation.docker.enableOnBoot = true;
 }
