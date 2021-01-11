@@ -130,7 +130,7 @@ in {
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 
-  # Enable the Tailscale.
+  # Enable Tailscale.
   services.tailscale.enable = true;
 
   # Run node_exporter everywhere.
