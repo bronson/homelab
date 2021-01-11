@@ -3,6 +3,12 @@ let
   unstable_os = import <nixos-unstable> { };
   unstable_pkgs = import <nixpkgs-unstable> { };
 
+  # Import comma with local nix-index preferred over the comma one.
+  comma = import (builtins.fetchTarball
+    "https://github.com/Shopify/comma/archive/60a4cf8ec5c93104d3cfb9fc5a5bac8fb18cc8e4.tar.gz") {
+      inherit pkgs;
+    };
+
 in {
   imports = [ # Include the results of the hardware scan.
     <nixos-hardware/common/pc/ssd>
@@ -83,6 +89,7 @@ in {
     systemPackages = with pkgs; [
       bandwhich
       byobu
+      comma
       dmidecode
       ethtool
       gcc
@@ -127,9 +134,7 @@ in {
   services.tailscale.enable = true;
 
   security.sudo.wheelNeedsPassword = false;
-  virtualisation.podman = {
-    enable = true;
-  };
+  virtualisation.podman = { enable = true; };
 
   programs.zsh = {
     enable = true;
