@@ -104,6 +104,7 @@ in {
       lm_sensors
       lshw
       lsscsi
+      mosh
       mkpasswd
       mtr
       ndisc6
@@ -130,6 +131,7 @@ in {
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 
+  programs.mosh.enable = true;
   # Enable the Tailscale.
   services.tailscale.enable = true;
 
