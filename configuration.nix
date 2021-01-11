@@ -133,6 +133,9 @@ in {
   # Enable the Tailscale.
   services.tailscale.enable = true;
 
+  # Run node_exporter everywhere.
+  services.prometheus.exporters.node.enable = true;
+
   security.sudo.wheelNeedsPassword = false;
   virtualisation.podman = { enable = true; };
 
