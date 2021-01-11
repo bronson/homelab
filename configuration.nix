@@ -117,7 +117,7 @@ in {
         zsh
       ];
 
-      shells = pkgs.zsh
+      shells = pkgs.zsh;
     };
 
     # Enable the OpenSSH daemon.
