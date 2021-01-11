@@ -127,8 +127,10 @@ in {
   services.tailscale.enable = true;
 
   security.sudo.wheelNeedsPassword = false;
-  virtualisation.docker.enable = true;
-  virtualisation.docker.enableOnBoot = true;
+  virtualisation.podman = {
+    enable = true;
+    dockerCompat = true;
+  };
 
   programs.zsh = {
     enable = true;
