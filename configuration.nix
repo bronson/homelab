@@ -44,7 +44,7 @@ in {
     users.users.adi = {
       isNormalUser = true;
       extraGroups = [ "wheel" "sudo" "docker" ]; # Enable ‘sudo’ for the user.
-
+      shell = pkgs.zsh;
       openssh.authorizedKeys.keys = [
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBSWf+pMgyV7gCuYvYh0ySizmKLhCCZCRw4trVqLeqol"
       ];
@@ -116,8 +116,6 @@ in {
         wget
         zsh
       ];
-
-      shells = pkgs.zsh;
     };
 
     # Enable the OpenSSH daemon.
