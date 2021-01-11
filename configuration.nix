@@ -129,7 +129,6 @@ in {
   security.sudo.wheelNeedsPassword = false;
   virtualisation.podman = {
     enable = true;
-    dockerCompat = true;
   };
 
   programs.zsh = {
@@ -142,7 +141,7 @@ in {
 
     ohMyZsh = {
       enable = true;
-      plugins = [ "git" "sudo" "docker" ];
+      plugins = [ "git" "sudo" ];
       theme = "agnoster";
     };
   };
