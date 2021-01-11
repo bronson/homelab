@@ -5,6 +5,8 @@ let
 
 in {
   imports = [ # Include the results of the hardware scan.
+    <nixos-hardware/common/pc/ssd>
+    <nixos-hardware/common/cpu/intel>
     ./hardware-configuration.nix
   ];
 
