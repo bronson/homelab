@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 let
-  unstable_os = import <nixos-unstable> { };
-  unstable_pkgs = import <nixpkgs-unstable> { };
+  unstable-os = import <nixos-unstable> { };
+  unstable-pkgs = import <nixpkgs-unstable> { };
 
   # Import comma with local nix-index preferred over the comma one.
   comma = import (builtins.fetchTarball
@@ -21,7 +21,7 @@ in {
   ];
 
   hardware.opengl.extraPackages = [
-    intel-compute-runtime
+    pkgs.intel-compute-runtime
   ];
 
   boot = {
@@ -32,7 +32,7 @@ in {
     };
 
     # Linux kernel 5.10 LTS
-    kernelPackages = unstable_os.linuxPackages_5_10;
+    kernelPackages = unstable-os.linuxPackages_5_10;
 
     cleanTmpDir = true;
   };
@@ -103,7 +103,7 @@ in {
       gcc
       go
       git
-      unstable_pkgs.gitAndTools.gh
+      unstable-pkgs.gitAndTools.gh
       gnumake
       htop
       iftop
@@ -123,9 +123,9 @@ in {
       nmon
       pciutils
       pkg-config
-      unstable_pkgs.ripgrep
+      unstable-pkgs.ripgrep
       smartmontools
-      unstable_pkgs.tailscale
+      unstable-pkgs.tailscale
       tcpdump
       tmux
       unixtools.xxd
