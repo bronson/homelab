@@ -18,7 +18,7 @@ in {
 
     # Service configuration.
     ./containers.nix
-    ./prometheus.nix
+    # ./prometheus.nix
   ];
 
   hardware = {

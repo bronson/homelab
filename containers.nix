@@ -14,11 +14,12 @@
           "/var/lib/adguardhome/work:/opt/adguardhome/work"
         ];
       };
-
-      promlens = {
-        image = "promlabs/promlens";
-        ports = [ "9091:8080" ];
-        volumes = [ "/var/lib/promlens:/var/lib/promlens" ];
+      
+      grafana = {
+        autoStart = true;
+        image = "grafana/grafana:7.3.6";
+        ports = [ "3000:3000" ];
+        volumes = [ "/var/lib/grafana:/var/lib/grafana" ];
       };
     };
   };
