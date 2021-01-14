@@ -14,6 +14,12 @@
           "/var/lib/adguardhome/work:/opt/adguardhome/work"
         ];
       };
+
+      promlens = {
+        image = "promlabs/promlens";
+        ports = [ "9091:8080" ];
+        volumes = [ "/var/lib/promlens:/var/lib/promlens" ];
+      };
     };
   };
 }
