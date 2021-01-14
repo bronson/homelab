@@ -20,9 +20,13 @@ in {
     ./containers.nix
   ];
 
-  hardware.opengl.extraPackages = [
-    pkgs.intel-compute-runtime
-  ];
+  hardware = {
+    opengl = {
+      enable = true;
+      extraPackages = [ pkgs.intel-compute-runtime ];
+    };
+    cpu.intel.updateMicrocode = true;
+  };
 
   boot = {
     # Use the systemd-boot EFI boot loader.
