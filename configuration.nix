@@ -10,10 +10,18 @@ let
     };
 
 in {
-  imports = [ # Include the results of the hardware scan.
+  imports = [
     <nixos-hardware/common/pc/ssd>
     <nixos-hardware/common/cpu/intel>
+    # Include the results of the hardware scan.
     ./hardware-configuration.nix
+
+    # Service configuration.
+    ./containers.nix
+  ];
+
+  hardware.opengl.extraPackages = [
+    intel-compute-runtime
   ];
 
   boot = {
