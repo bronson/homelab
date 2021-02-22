@@ -51,6 +51,7 @@ in {
     useDHCP = false;
     interfaces.eno1.useDHCP = true;
     interfaces.wlp2s0.useDHCP = true;
+    timeServers = [ "time.google.com" ];
   };
 
   time.timeZone = "America/Toronto";
@@ -140,6 +141,9 @@ in {
       zsh
     ];
   };
+  
+  # Enable Chrony
+  services.chrony.enable = true;
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
