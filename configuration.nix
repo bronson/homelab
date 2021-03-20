@@ -41,6 +41,8 @@ in {
     kernelPackages = unstable-os.linuxPackages_5_10;
 
     cleanTmpDir = true;
+    kernel.sysctl."net.ipv4.ip_forward" = 1;
+    kernel.sysctl."net.ipv6.conf.all.forwarding" = 1;
   };
 
   networking = {
