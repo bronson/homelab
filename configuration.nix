@@ -18,6 +18,7 @@ in {
 
     # Service configuration.
     ./containers.nix
+    ./tailscale.nix
     # ./prometheus.nix
   ];
 
@@ -131,7 +132,6 @@ in {
       pkg-config
       unstable-pkgs.ripgrep
       smartmontools
-      unstable-pkgs.tailscale
       tcpdump
       tmux
       unixtools.xxd
@@ -149,9 +149,6 @@ in {
   services.openssh.enable = true;
 
   programs.mosh.enable = true;
-
-  # Enable Tailscale.
-  services.tailscale.enable = true;
 
   # Run node_exporter everywhere.
   services.prometheus.exporters.node.enable = true;
