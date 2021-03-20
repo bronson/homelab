@@ -51,7 +51,7 @@ in {
     useDHCP = false;
     interfaces.eno1.useDHCP = true;
     interfaces.wlp2s0.useDHCP = true;
-    timeServers = [ "time.google.com" ];
+    timeServers = [ "time.nrc.ca" "time.chu.nrc.ca" "time.google.com" ];
   };
 
   time.timeZone = "America/Toronto";
