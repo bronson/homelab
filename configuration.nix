@@ -57,7 +57,7 @@ in {
     timeServers = [ "time.nrc.ca" "time.chu.nrc.ca" "time.google.com" ];
   };
 
-  time.timeZone = "America/Toronto";
+  time.timeZone = "America/Vancouver";
 
   i18n.defaultLocale = "en_US.UTF-8";
   console = {
@@ -141,6 +141,7 @@ in {
       usbutils
       wget
       zsh
+      python
     ];
   };
   
