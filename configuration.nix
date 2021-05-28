@@ -2,6 +2,7 @@
 let
   unstable-os = import <nixos-unstable> { };
   unstable-pkgs = import <nixpkgs-unstable> { };
+  stable = import <nixpkgs> { };
 
   # Import comma with local nix-index preferred over the comma one.
   comma = import (builtins.fetchTarball
@@ -38,9 +39,13 @@ in {
     };
 
     # Linux kernel 5.10 LTS
-    kernelPackages = unstable-os.linuxPackages_5_10;
+    kernelPackages = stable.linuxPackages_5_10;
 
+    kernelModules = [ "tcp_bbr" ];
+    kernel.sysctl."net.ipv4.tcp_congestion_control" = "bbr";
+    kernel.sysctl."net.core.default_qdisc" = "fq";
     cleanTmpDir = true;
+
     kernel.sysctl."net.ipv4.ip_forward" = 1;
     kernel.sysctl."net.ipv6.conf.all.forwarding" = 1;
   };
@@ -144,7 +149,7 @@ in {
       python
     ];
   };
-  
+
   # Enable Chrony
   services.chrony.enable = true;
 
