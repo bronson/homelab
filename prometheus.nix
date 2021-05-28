@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ config, lib, pkgs, modulesPath, ... }:
 
 let
   # Scrape a list of static targets for a job.

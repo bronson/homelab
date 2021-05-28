@@ -1,11 +1,6 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, modulesPath, ... }:
 
-let
-
-  baseconfig = { allowUnfree = true; };
-  unstable = import <nixos-unstable> { config = baseconfig; };
-
-in {
+{
 
   imports =
     [ <nixos-unstable/nixos/modules/services/networking/tailscale.nix> ];

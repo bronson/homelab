@@ -1,8 +1,9 @@
 { config, pkgs, ... }:
 let
-  unstable-os = import <nixos-unstable> { };
-  unstable-pkgs = import <nixpkgs-unstable> { };
-  stable = import <nixpkgs> { };
+  baseconfig = { allowUnfree = true; };
+
+  unstable = import <nixos-unstable> { config = baseconfig; };
+  stable = import <nixos-unstable> { config = baseconfig; };
 
   # Import comma with local nix-index preferred over the comma one.
   comma = import (builtins.fetchTarball
@@ -117,7 +118,7 @@ in {
       gcc
       go
       git
-      unstable-pkgs.gitAndTools.gh
+      unstable.gitAndTools.gh
       gnumake
       htop
       iftop
@@ -137,7 +138,7 @@ in {
       nmon
       pciutils
       pkg-config
-      unstable-pkgs.ripgrep
+      unstable.ripgrep
       smartmontools
       tcpdump
       tmux
