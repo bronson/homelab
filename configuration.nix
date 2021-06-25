@@ -115,6 +115,8 @@ in {
       comma
       dmidecode
       ethtool
+      unstable-os.bpftools
+      unstable-os.linuxPackages.bpftrace
       gcc
       go
       git
