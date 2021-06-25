@@ -76,7 +76,8 @@ in {
     extraGroups = [ "wheel" "sudo" "docker" ]; # Enable ‘sudo’ for the user.
     shell = pkgs.zsh;
     openssh.authorizedKeys.keys = [
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBSWf+pMgyV7gCuYvYh0ySizmKLhCCZCRw4trVqLeqol"
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICyjlZJ1nv50nYGs1s4sS+M3hKDg6GBM9bzAiB6RU5Cq"
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINm3GX9F06f1U75yIUoN5aljNPeniFhZEvq0j+ThjgL8"
     ];
   };
 
