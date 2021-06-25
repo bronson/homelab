@@ -163,7 +163,10 @@ in {
   services.prometheus.exporters.node.enable = true;
 
   security.sudo.wheelNeedsPassword = false;
-  virtualisation.podman = { enable = true; };
+  virtualisation.podman = {
+    enable = true;
+    dockerCompat = true;
+  };
 
   programs.zsh = {
     enable = true;
